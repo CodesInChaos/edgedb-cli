@@ -653,7 +653,7 @@ dependencies = [
 [[package]]
 name = "edgedb-derive"
 version = "0.1.0"
-source = "git+https://github.com/edgedb/edgedb-rust#75f5f9a67ad49c003e0b5b219bf58fab06c414a6"
+source = "git+https://github.com/edgedb/edgedb-rust#2fc1bb8473b02d3757ea19500e2f740c3f8e2483"
 dependencies = [
  "quote",
  "syn",
@@ -663,7 +663,7 @@ dependencies = [
 [[package]]
 name = "edgedb-protocol"
 version = "0.1.0"
-source = "git+https://github.com/edgedb/edgedb-rust#75f5f9a67ad49c003e0b5b219bf58fab06c414a6"
+source = "git+https://github.com/edgedb/edgedb-rust#2fc1bb8473b02d3757ea19500e2f740c3f8e2483"
 dependencies = [
  "bigdecimal",
  "bytes 0.5.4",

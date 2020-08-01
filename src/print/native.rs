@@ -6,9 +6,8 @@ use colorful::Colorful;
 use chrono::format::{Item, Numeric, Pad, Fixed};
 use chrono::{NaiveDateTime, NaiveDate, NaiveTime};
 use humantime::format_rfc3339;
-use num_bigint::BigInt;
 
-use edgedb_protocol::value::Value;
+use edgedb_protocol::value::{Value, BigInt};
 use crate::print::formatter::Formatter;
 use crate::print::buffer::Result;
 
@@ -68,7 +67,7 @@ fn escape_string(s: &str, expanded: bool) -> String {
     return buf;
 }
 
-fn format_bigint(bint: BigInt) -> String {
+fn format_bigint(bint: &BigInt) -> String {
     let txt = bint.to_string();
     let no_zeros = txt.trim_end_matches('0');
     let zeros = txt.len() - no_zeros.len();
@@ -115,7 +114,7 @@ impl FormatExt for Value {
             V::Int64(v) => prn.const_scalar(v),
             V::Float32(v) => prn.const_scalar(v),
             V::Float64(v) => prn.const_scalar(v),
-            V::BigInt(v) => prn.const_scalar(format_bigint(v.into())),
+            V::BigInt(v) => prn.const_scalar(format_bigint(v)),
             V::Decimal(v) => prn.const_scalar(format_decimal(v.into())),
             V::Bool(v) => prn.const_scalar(v),
             V::Datetime(t) => prn.typed("datetime", format_rfc3339(*t)),
